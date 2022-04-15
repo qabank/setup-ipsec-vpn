@@ -24,7 +24,7 @@
 # - All values MUST be placed inside 'single quotes'
 # - DO NOT use these special characters within values: \ " '
 
-VPN_PUBLIC_IP='2a02:180:6:1::27cc'
+VPN_PUBLIC_IP='srv15034.blue.kundencontroller.de'
 VPN_IPSEC_PSK='vbxocxaa'
 VPN_USER='qabank'
 VPN_PASSWORD='vbxocxaa'
@@ -206,7 +206,7 @@ install_setup_pkgs() {
 }
 
 detect_ip
-  public_ip='2a02:180:6:1::27cc'
+  public_ip='srv15034.blue.kundencontroller.de'
 
 install_vpn_pkgs() {
   bigecho "Installing packages required for the VPN..."
