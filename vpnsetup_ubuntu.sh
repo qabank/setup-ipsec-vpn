@@ -24,9 +24,10 @@
 # - All values MUST be placed inside 'single quotes'
 # - DO NOT use these special characters within values: \ " '
 
-YOUR_IPSEC_PSK=''
-YOUR_USERNAME=''
-YOUR_PASSWORD=''
+VPN_PUBLIC_IP='2a02:180:6:1::27cc'
+VPN_IPSEC_PSK='vbxocxaa'
+VPN_USER='qabank'
+VPN_PASSWORD='vbxocxaa'
 
 # Important notes:   https://git.io/vpnnotes
 # Setup VPN clients: https://git.io/vpnclients
@@ -204,11 +205,8 @@ install_setup_pkgs() {
   ) || exiterr2
 }
 
-detect_ip() {
-  bigecho "Trying to auto discover IP of this server..."
-  public_ip=${VPN_PUBLIC_IP:-'2a02:180:6:1::27cc'}
-  check_ip "$public_ip" || exiterr "Cannot detect this server's public IP. Define it as variable 'VPN_PUBLIC_IP' and re-run this script."
-}
+detect_ip
+  public_ip='2a02:180:6:1::27cc'
 
 install_vpn_pkgs() {
   bigecho "Installing packages required for the VPN..."
