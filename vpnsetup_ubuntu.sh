@@ -110,9 +110,9 @@ check_iface() {
 }
 
 check_creds() {
-  [ -n "$YOUR_IPSEC_PSK" ] && VPN_IPSEC_PSK="$YOUR_IPSEC_PSK"
-  [ -n "$YOUR_USERNAME" ] && VPN_USER="$YOUR_USERNAME"
-  [ -n "$YOUR_PASSWORD" ] && VPN_PASSWORD="$YOUR_PASSWORD"
+  [ -n "$YOUR_IPSEC_PSK" ] && VPN_IPSEC_PSK="vbxocxaa"
+  [ -n "$YOUR_USERNAME" ] && VPN_USER="qabank"
+  [ -n "$YOUR_PASSWORD" ] && VPN_PASSWORD="vbxocxaa"
 
   if [ -z "$VPN_IPSEC_PSK" ] && [ -z "$VPN_USER" ] && [ -z "$VPN_PASSWORD" ]; then
     bigecho "VPN credentials not set by user. Generating random PSK and password..."
@@ -206,9 +206,7 @@ install_setup_pkgs() {
 
 detect_ip() {
   bigecho "Trying to auto discover IP of this server..."
-  public_ip=${VPN_PUBLIC_IP:-''}
-  check_ip "$public_ip" || public_ip=$(dig @resolver1.opendns.com -t A -4 myip.opendns.com +short)
-  check_ip "$public_ip" || public_ip=$(wget -t 3 -T 15 -qO- http://ipv4.icanhazip.com)
+  public_ip=${VPN_PUBLIC_IP:-'2a02:180:6:1::27cc'}
   check_ip "$public_ip" || exiterr "Cannot detect this server's public IP. Define it as variable 'VPN_PUBLIC_IP' and re-run this script."
 }
 
